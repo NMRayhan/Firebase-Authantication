@@ -50,6 +50,18 @@ function App() {
   }
   const handleInputChange = (e) => {
     console.log(e.target.name, e.target.value);
+    if (e.target.name === 'email') {
+      const isEmailValidate = /\S+@\S+\.\S+/.test(e.target.value);
+      console.log(isEmailValidate);
+      return isEmailValidate;
+    }
+    if (e.target.name === 'password') {
+      const isPassWordValidateRegex = /\d{1}/.test(e.target.value);
+      const isPassWordValidateNumber = e.target.value;
+      const isPassWordValidate = isPassWordValidateNumber && isPassWordValidateRegex;
+      console.log(isPassWordValidate);
+      return isPassWordValidate
+    }
   }
   return (
     <div className="App">
@@ -69,9 +81,9 @@ function App() {
         </div>
       }
       <form>
-        <input type="email" onChange={handleInputChange} name="email" placeholder="Enter Your Email" required />
+        <input type="email" onBlur={handleInputChange} name="email" placeholder="Enter Your Email" required />
         <br />
-        <input type="Password" onChange={handleInputChange} name="password" placeholder="Enter Your Password" required /><br />
+        <input type="Password" onBlur={handleInputChange} name="password" placeholder="Enter Your Password" required /><br />
         <input type="submit" value="submit" />
       </form>
     </div>
