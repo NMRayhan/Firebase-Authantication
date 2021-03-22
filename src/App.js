@@ -48,6 +48,9 @@ function App() {
       console.log(error);
     });
   }
+  const handleInputChange = (e) => {
+    console.log(e.target.name, e.target.value);
+  }
   return (
     <div className="App">
       {
@@ -65,6 +68,12 @@ function App() {
           <img src={User.photo} alt={User.name} />
         </div>
       }
+      <form>
+        <input type="email" onChange={handleInputChange} name="email" placeholder="Enter Your Email" required />
+        <br />
+        <input type="Password" onChange={handleInputChange} name="password" placeholder="Enter Your Password" required /><br />
+        <input type="submit" value="submit" />
+      </form>
     </div>
   );
 }
